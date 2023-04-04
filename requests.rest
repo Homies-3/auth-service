@@ -1,54 +1,9 @@
-GET http://localhost:4000/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkdhdXRoYW0iLCJpYXQiOjE2NzkyOTI4NTIsImV4cCI6MTY3OTI5Mjg3Mn0.jxpidJFHCxrkoVQx1Y-ZNpDmC3OMbb2om1FwNJT0Pag
 
 ###
-GET http://localhost:4000/users
-
-###
-POST http://localhost:4000/users/login
+POST http://localhost:3003/auth
 Content-Type: application/json
 
 {
-    "Name": "Gautham krishna g",
-    "Password":"abcde"
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.7ncKjK17oyKW73ocljmKG1ckG3xRQaMmpv-DWySX1VA"
 }
 
-###
-POST http://localhost:4000/users/register
-Content-Type: application/json
-
-{
-    "Name": "Babu",
-    "Email": "gautham4@gmail.com",
-    "Phone": "9946166081",
-    "Password":"abcde"
-}
-
-###
-POST http://localhost:4000/login
-Content-Type: application/json
-
-{
-    "userName":"Gautham"
-}
-
-###
-POST http://localhost:4000/refresh
-Content-Type: application/json
-
-{
-    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkdhdXRoYW0iLCJpYXQiOjE2NzkyOTI2MjV9.PFCtq7Tmt5VsP3ZgfDGqzwogLLD-pa_py_CTED2uJs8"
-}
-
-###
-DELETE http://localhost:4000/logout
-Content-Type: application/json
-
-{
-    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkdhdXRoYW0iLCJpYXQiOjE2NzkyOTI2MjV9.PFCtq7Tmt5VsP3ZgfDGqzwogLLD-pa_py_CTED2uJs8"
-}
-
-
-###
-
-GET http://localhost:4000/auth/isValidated

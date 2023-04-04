@@ -3,9 +3,9 @@ const jwt = require("jsonwebtoken");
 
 function verifyJWTToken(token) {
   if (token == null) return false;
-  jwt.verify(refreshToken, process.env.TOKEN_SECRET, (err, user) => {
+  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
     if (err) {
-      console.log("Invalid token");
+      console.log("Invalid token: ", err);
       return false;
     }
   });
