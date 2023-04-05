@@ -1,16 +1,24 @@
-require("dotenv").config;
-const jwt = require("jsonwebtoken");
+require('dotenv').config
+const jwt = require('jsonwebtoken')
+
+const JWT_STATUS = Object.freeze({
+  INVALID_TOKEN: 'invalid_token',
+  VALID_TOKEN: 'valid_token',
+  BAD_TOKEN: 'bad_token',
+})
 
 function verifyJWTToken(token) {
-  if (token == null) return false;
-  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
-    if (err) {
-      console.log("Invalid token: ", err);
-      return false;
-    }
-  });
+  if (token == null) return JWT_STATUS.BAD_TOKEN
 
-  return true;
+  try {
+    jwt.verify(token, process.env.TOKEN_SECRET)
+  } catch (e) {
+    if (e instanceof jwt.JsonWebTokenError) return JWT_STATUS.INVALID_TOKEN
+
+    return JWT_STATUS.BAD_TOKEN
+  }
+
+  return JWT_STATUS.VALID_TOKEN
 }
 
-module.exports = verifyJWTToken;
+module.exports = { JWT_STATUS, verifyJWTToken }

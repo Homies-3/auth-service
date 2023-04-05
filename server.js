@@ -1,16 +1,18 @@
-require("dotenv").config();
-const express = require("express");
-const app = express();
+require('dotenv').config()
+const express = require('express')
+const app = express()
 
-const verifyJWTToken = require("./service");
+const { verifyJWTToken, JWT_STATUS } = require('./service')
 
-app.use(express.json());
-app.post("/auth", (req, res) => {
-  var isValid = false;
+app.use(express.json())
+
+app.post('/auth', (req, res) => {
+  var isValid = JWT_STATUS.INVALID_TOKEN
+
   if (req.headers && req.headers.authorization)
-    isValid = verifyJWTToken(req.headers.authorization.split(" ")[1]);
+    isValid = verifyJWTToken(req.headers.authorization.split(' ')[1])
 
-  res.sendStatus(isValid ? 200 : 401);
-});
+  res.sendStatus(isValid != JWT_STATUS.VALID_TOKEN ? 401 : 200)
+})
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT)
