@@ -1,9 +1,0 @@
-
-###
-POST http://localhost:3003/auth
-Content-Type: application/json
-
-{
-    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.7ncKjK17oyKW73ocljmKG1ckG3xRQaMmpv-DWySX1VA"
-}
-
