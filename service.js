@@ -8,17 +8,24 @@ const JWT_STATUS = Object.freeze({
 })
 
 function verifyJWTToken(token) {
+  var decoded
   if (token == null) return JWT_STATUS.BAD_TOKEN
 
   try {
-    jwt.verify(token, process.env.TOKEN_SECRET)
+    decoded = jwt.verify(token, process.env.TOKEN_SECRET)
   } catch (e) {
     if (e instanceof jwt.JsonWebTokenError) return JWT_STATUS.INVALID_TOKEN
 
-    return JWT_STATUS.BAD_TOKEN
+    return JWT_STATUS.BAD_TOKEN,""
   }
 
-  return JWT_STATUS.VALID_TOKEN
+  return JWT_STATUS.VALID_TOKEN, decoded 
 }
 
-module.exports = { JWT_STATUS, verifyJWTToken }
+function decodeUserId(decoded){
+
+
+  return "";
+}
+
+module.exports = { JWT_STATUS, verifyJWTToken, decodeUserId }
